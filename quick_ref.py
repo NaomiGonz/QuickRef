@@ -58,6 +58,26 @@ def ref_screen():
   [green]screen -X -S name quit[/green]
 """)
 
+def ref_send():
+    print("""
+[bold underline]Send Files to/from Remote Computers Quick Reference[/bold underline]
+
+• Format: 
+  [green]rsync -<flags> <src> <dest>[/green]
+  [yellow]<user>@server:<dir_path>[/yellow]
+
+• Example:
+  [green]rsync -azhvP --inplace etl@ceamtddaq01:~/lpGBTv2_3_SO1_ETL .[/green]
+
+• Flag descriptions:
+  [green]-a[/green] Archive, recursive, preserve metadata
+  [green]-v[/green] Verbose
+  [green]-z[/green] Compress
+  [green]-h[/green] Human-Readable
+  [green]-P[/green] Progress bar per file + keeps partially transferred
+  [green]--inplace[/green] Write updates directly to the dest (saves space)
+
+""")
 
 def ref_help(hidden = True):
     print("\n[bold]Available topics:[/bold]")
@@ -82,6 +102,7 @@ reference_map = {
     "git": CallableDisplay(ref_git),
     "screen": CallableDisplay(ref_screen),
     "help": CallableDisplay(ref_help),
+    "send" : CallableDisplay(ref_send),
 }
 
 def interactive_shell():
