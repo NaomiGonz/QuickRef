@@ -35,6 +35,7 @@ def ref_git():
 • View/change global git settings:
   [green]git config --list --global[/green]
   [green]git config --global user.email "email@example.com"[/green]
+
 """)
 
 
@@ -56,6 +57,7 @@ def ref_screen():
 
 • Kill session:
   [green]screen -X -S name quit[/green]
+
 """)
 
 def ref_send():
@@ -76,6 +78,57 @@ def ref_send():
   [green]-h[/green] Human-Readable
   [green]-P[/green] Progress bar per file + keeps partially transferred
   [green]--inplace[/green] Write updates directly to the dest (saves space)
+
+""")
+
+def ref_conda():
+    print("""
+[bold underline]Mini-Conda Quick Reference[/bold underline]
+
+• Create enviornment:
+  [green]conda create -n <name> python=3.11[/green]
+
+• Enter enviornment:
+  [green]conda activate <name>[/green]
+
+• Exit enviornment:
+  [green]conda deactivate[/green]
+
+• List avaliable enviornments:
+  [green]conda info --envs[/green]
+
+""")
+
+def ref_docker():
+    print("""
+[bold underline]Docker Quick Reference[/bold underline]
+
+• Start docker:
+  [green]sudo systemctl start docker[/green]
+
+• Stop docker:
+  [green]sudo systemctl stop docker[/green]
+
+• Make the current user not have to sudo to use docker:
+  [green]sudo usermod -aG docker $USER[/green]
+
+• Check status:
+  [green]sudo systemctl status docker[/green]
+
+• List containers:
+  [green]docker ps -a[/green]
+
+• Remove container:
+  [green]docker rm <container_id>[/green]
+
+• Remove all stopped containers:
+  [green]docker container prune[/green]
+
+• Remove all images withouot containers:
+  [green]docker image prune -a[/green]
+
+• Remove all images + containers stopped and networks not used:
+  [green]docker image prune -a[/green]
 
 """)
 
@@ -103,6 +156,8 @@ reference_map = {
     "screen": CallableDisplay(ref_screen),
     "help": CallableDisplay(ref_help),
     "send" : CallableDisplay(ref_send),
+    "conda" : CallableDisplay(ref_conda),
+    "docker" : CallableDisplay(ref_docker),
 }
 
 def interactive_shell():
